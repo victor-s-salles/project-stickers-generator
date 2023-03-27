@@ -9,7 +9,10 @@ import java.util.Map;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        String url = "https://imdb-api.com/en/API/Top250Movies/KEY";
+        // String url = "https://imdb-api.com/en/API/Top250Movies/KEY";
+
+        // Caso a api do IMBD esteja instável
+        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
 
         URI address = URI.create(url);
 
@@ -27,6 +30,13 @@ public class App {
 
         List<Map<String, String>> filmsList = parser.parse(body);
 
-        System.out.println(filmsList);
+        // System.out.println(filmsList.size());
+
+        for (Map<String, String> film : filmsList) {
+            System.out.println(film.get("title"));
+            System.out.println(film.get("image"));
+            System.out.println(film.get("imDbRating"));
+            System.out.println();
+        }
     }
 }
